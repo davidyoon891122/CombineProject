@@ -25,6 +25,9 @@
 		ADB316932BD600C500039498 /* WithLatestFromNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB316922BD600C500039498 /* WithLatestFromNavigator.swift */; };
 		ADB3169A2BD625FD00039498 /* Combine+WithLatestFrom.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB316992BD625FD00039498 /* Combine+WithLatestFrom.swift */; };
 		ADB3169D2BD6361C00039498 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = ADB3169C2BD6361C00039498 /* CombineCocoa */; };
+		ADB316A12BD64C4200039498 /* CombineLatestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB316A02BD64C4200039498 /* CombineLatestViewController.swift */; };
+		ADB316A42BD64C9900039498 /* CombineLatestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB316A32BD64C9900039498 /* CombineLatestViewModel.swift */; };
+		ADB316A62BD64D1200039498 /* CombineLatestNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB316A52BD64D1200039498 /* CombineLatestNavigator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,9 @@
 		ADB316902BD600B700039498 /* WithLatestFromViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithLatestFromViewModel.swift; sourceTree = "<group>"; };
 		ADB316922BD600C500039498 /* WithLatestFromNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithLatestFromNavigator.swift; sourceTree = "<group>"; };
 		ADB316992BD625FD00039498 /* Combine+WithLatestFrom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Combine+WithLatestFrom.swift"; sourceTree = "<group>"; };
+		ADB316A02BD64C4200039498 /* CombineLatestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineLatestViewController.swift; sourceTree = "<group>"; };
+		ADB316A32BD64C9900039498 /* CombineLatestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineLatestViewModel.swift; sourceTree = "<group>"; };
+		ADB316A52BD64D1200039498 /* CombineLatestNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineLatestNavigator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,7 @@
 				ADB316892BD5ECF800039498 /* Common */,
 				AD3D00A32BD2344900AEBCEC /* Menu */,
 				ADB3168F2BD600AB00039498 /* WithLatestFrom */,
+				ADB316A22BD64C7900039498 /* CombineLatest */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -171,6 +178,16 @@
 				ADB316852BD5EB3D00039498 /* Extension+Publishers.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		ADB316A22BD64C7900039498 /* CombineLatest */ = {
+			isa = PBXGroup;
+			children = (
+				ADB316A02BD64C4200039498 /* CombineLatestViewController.swift */,
+				ADB316A32BD64C9900039498 /* CombineLatestViewModel.swift */,
+				ADB316A52BD64D1200039498 /* CombineLatestNavigator.swift */,
+			);
+			path = CombineLatest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,10 +276,13 @@
 				ADB3169A2BD625FD00039498 /* Combine+WithLatestFrom.swift in Sources */,
 				ADB3168E2BD6009200039498 /* WithLatestFromViewController.swift in Sources */,
 				ADB316932BD600C500039498 /* WithLatestFromNavigator.swift in Sources */,
+				ADB316A12BD64C4200039498 /* CombineLatestViewController.swift in Sources */,
 				AD3D00A52BD2347C00AEBCEC /* MenuViewModel.swift in Sources */,
 				ADB3168B2BD5F41100039498 /* MenuNavigator.swift in Sources */,
 				AD3D00AC2BD23E5900AEBCEC /* Extension+UICollectionView.swift in Sources */,
 				ADB316912BD600B700039498 /* WithLatestFromViewModel.swift in Sources */,
+				ADB316A62BD64D1200039498 /* CombineLatestNavigator.swift in Sources */,
+				ADB316A42BD64C9900039498 /* CombineLatestViewModel.swift in Sources */,
 				ADB316862BD5EB3D00039498 /* Extension+Publishers.swift in Sources */,
 				AD3D00AA2BD23CCB00AEBCEC /* MenuCollectionViewCell.swift in Sources */,
 			);
