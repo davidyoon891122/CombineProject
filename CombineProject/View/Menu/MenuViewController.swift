@@ -11,6 +11,8 @@ import SnapKit
 
 final class MenuViewController: UIViewController {
     
+    private let viewDidLoadPublisher: PassthroughSubject<Void, Never> = .init()
+    
     private lazy var collectionView: UICollectionView = {
         let layout = createLayout()
         
@@ -24,17 +26,24 @@ final class MenuViewController: UIViewController {
         return collectionView
     }()
     
-    private lazy var dataSource: UICollectionViewDiffableDataSource<Int, String> = {
+    private lazy var dataSource: UICollectionViewDiffableDataSource<Int, MenuModel> = {
         .init(collectionView: self.collectionView, cellProvider: { collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(MenuCollectionViewCell.self, for: indexPath)
+            cell.setupCell(title: item.title)
             
             return cell
         })
     }()
     
+    private let viewModel: MenuViewModel = MenuViewModel()
+    
+    private var cancellables: Set<AnyCancellable> = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupViews()
+        self.setupViews()
+        self.bindViewModel()
+        self.viewDidLoadPublisher.send()
     }
     
 }
@@ -43,6 +52,27 @@ private extension MenuViewController {
     
     func setupViews() {
         self.view.backgroundColor = .systemBackground
+        
+        self.view.addSubview(self.collectionView)
+        
+        self.collectionView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+    }
+    
+    func bindViewModel() {
+        let outputs = self.viewModel.bind(.init(viewDidLoad: self.viewDidLoadPublisher.eraseToAnyPublisher()))
+        
+        [
+            outputs.events.sinkIgnored(),
+            outputs.menus.sink(receiveValue: { [weak self] menus in
+                self?.applySnapshot(items: menus)
+            })
+        ]
+            .forEach {
+                self.cancellables.insert($0)
+            }
+        
     }
     
     func createLayout() -> UICollectionViewCompositionalLayout {
@@ -53,6 +83,14 @@ private extension MenuViewController {
             
             return section
         })
+    }
+    
+    func applySnapshot(items: [MenuModel]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, MenuModel>()
+        snapshot.appendSections([0])
+        snapshot.appendItems(items)
+        
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
     
     
