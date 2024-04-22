@@ -12,6 +12,7 @@ import SnapKit
 final class MenuViewController: UIViewController {
     
     private let viewDidLoadPublisher: PassthroughSubject<Void, Never> = .init()
+    private let didSelectedPublisher: PassthroughSubject<IndexPath, Never> = .init()
     
     private lazy var collectionView: UICollectionView = {
         let layout = createLayout()
@@ -22,6 +23,8 @@ final class MenuViewController: UIViewController {
         )
         
         collectionView.register(MenuCollectionViewCell.self)
+        
+        collectionView.delegate = self
         
         return collectionView
     }()
@@ -35,7 +38,16 @@ final class MenuViewController: UIViewController {
         })
     }()
     
-    private let viewModel: MenuViewModel = MenuViewModel()
+    private let viewModel: MenuViewModel
+    
+    init(viewModel: MenuViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private var cancellables: Set<AnyCancellable> = []
     
@@ -48,24 +60,45 @@ final class MenuViewController: UIViewController {
     
 }
 
+// CollectionView Delegate
+extension MenuViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.didSelectedPublisher.send(indexPath)
+    }
+    
+}
+
+
 private extension MenuViewController {
     
     func setupViews() {
         self.view.backgroundColor = .systemBackground
-        
-        self.view.addSubview(self.collectionView)
+        [
+            self.collectionView
+        ]
+            .forEach {
+                self.view.addSubview($0)
+            }
         
         self.collectionView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalTo(self.view.safeAreaLayoutGuide)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide)
         }
     }
     
     func bindViewModel() {
-        let outputs = self.viewModel.bind(.init(viewDidLoad: self.viewDidLoadPublisher.eraseToAnyPublisher()))
+        let outputs = self.viewModel.bind(.init(
+            viewDidLoad: self.viewDidLoadPublisher.eraseToAnyPublisher(),
+            didSelected: self.didSelectedPublisher.eraseToAnyPublisher())
+        )
         
         [
             outputs.events.sinkIgnored(),
-            outputs.menus.sink(receiveValue: { [weak self] menus in
+            outputs.title.assign(to: \.title, on: self.navigationItem),
+            outputs.menus
+                .sink(receiveValue: { [weak self] menus in
                 self?.applySnapshot(items: menus)
             })
         ]
@@ -97,5 +130,5 @@ private extension MenuViewController {
 }
 
 #Preview {
-    MenuViewController()
+    MenuViewController(viewModel: MenuViewModel(navigator: MenuNavigator(navigationController: UINavigationController())))
 }

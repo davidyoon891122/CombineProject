@@ -55,7 +55,8 @@ final class MenuCollectionViewCell: UICollectionViewCell {
         self.arrowImageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         
         self.separator.snp.makeConstraints {
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.bottom.equalToSuperview()
         }
         
         return view

@@ -19,6 +19,11 @@
 		ADB316842BD5E89F00039498 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB316832BD5E89F00039498 /* MenuModel.swift */; };
 		ADB316862BD5EB3D00039498 /* Extension+Publishers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB316852BD5EB3D00039498 /* Extension+Publishers.swift */; };
 		ADB316882BD5ECF500039498 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB316872BD5ECF500039498 /* SeparatorView.swift */; };
+		ADB3168B2BD5F41100039498 /* MenuNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB3168A2BD5F41100039498 /* MenuNavigator.swift */; };
+		ADB3168E2BD6009200039498 /* WithLatestFromViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB3168D2BD6009200039498 /* WithLatestFromViewController.swift */; };
+		ADB316912BD600B700039498 /* WithLatestFromViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB316902BD600B700039498 /* WithLatestFromViewModel.swift */; };
+		ADB316932BD600C500039498 /* WithLatestFromNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB316922BD600C500039498 /* WithLatestFromNavigator.swift */; };
+		ADB3169A2BD625FD00039498 /* Combine+WithLatestFrom.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB316992BD625FD00039498 /* Combine+WithLatestFrom.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +40,11 @@
 		ADB316832BD5E89F00039498 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		ADB316852BD5EB3D00039498 /* Extension+Publishers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Publishers.swift"; sourceTree = "<group>"; };
 		ADB316872BD5ECF500039498 /* SeparatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
+		ADB3168A2BD5F41100039498 /* MenuNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuNavigator.swift; sourceTree = "<group>"; };
+		ADB3168D2BD6009200039498 /* WithLatestFromViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithLatestFromViewController.swift; sourceTree = "<group>"; };
+		ADB316902BD600B700039498 /* WithLatestFromViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithLatestFromViewModel.swift; sourceTree = "<group>"; };
+		ADB316922BD600C500039498 /* WithLatestFromNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithLatestFromNavigator.swift; sourceTree = "<group>"; };
+		ADB316992BD625FD00039498 /* Combine+WithLatestFrom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Combine+WithLatestFrom.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,12 +80,11 @@
 			children = (
 				AD3D009D2BD233C900AEBCEC /* Delegate */,
 				AD3D00A22BD2343E00AEBCEC /* View */,
+				ADB316952BD61FBC00039498 /* Tool */,
+				ADB316942BD61FB500039498 /* Model */,
 				AD3D00922BD2337000AEBCEC /* Assets.xcassets */,
 				AD3D00942BD2337000AEBCEC /* LaunchScreen.storyboard */,
 				AD3D00972BD2337000AEBCEC /* Info.plist */,
-				AD3D00AB2BD23E5900AEBCEC /* Extension+UICollectionView.swift */,
-				ADB316832BD5E89F00039498 /* MenuModel.swift */,
-				ADB316852BD5EB3D00039498 /* Extension+Publishers.swift */,
 			);
 			path = CombineProject;
 			sourceTree = "<group>";
@@ -94,6 +103,7 @@
 			children = (
 				ADB316892BD5ECF800039498 /* Common */,
 				AD3D00A32BD2344900AEBCEC /* Menu */,
+				ADB3168F2BD600AB00039498 /* WithLatestFrom */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -103,7 +113,8 @@
 			children = (
 				AD3D00A02BD2340800AEBCEC /* MenuViewController.swift */,
 				AD3D00A42BD2347C00AEBCEC /* MenuViewModel.swift */,
-				AD3D00A92BD23CCB00AEBCEC /* MenuCollectionViewCell.swift */,
+				ADB3168A2BD5F41100039498 /* MenuNavigator.swift */,
+				ADB3168C2BD5FF1E00039498 /* Cell */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -114,6 +125,50 @@
 				ADB316872BD5ECF500039498 /* SeparatorView.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		ADB3168C2BD5FF1E00039498 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				AD3D00A92BD23CCB00AEBCEC /* MenuCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		ADB3168F2BD600AB00039498 /* WithLatestFrom */ = {
+			isa = PBXGroup;
+			children = (
+				ADB3168D2BD6009200039498 /* WithLatestFromViewController.swift */,
+				ADB316902BD600B700039498 /* WithLatestFromViewModel.swift */,
+				ADB316922BD600C500039498 /* WithLatestFromNavigator.swift */,
+			);
+			path = WithLatestFrom;
+			sourceTree = "<group>";
+		};
+		ADB316942BD61FB500039498 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ADB316832BD5E89F00039498 /* MenuModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ADB316952BD61FBC00039498 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				ADB316962BD61FCA00039498 /* Extension */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		ADB316962BD61FCA00039498 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				ADB316992BD625FD00039498 /* Combine+WithLatestFrom.swift */,
+				AD3D00AB2BD23E5900AEBCEC /* Extension+UICollectionView.swift */,
+				ADB316852BD5EB3D00039498 /* Extension+Publishers.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,8 +252,13 @@
 				AD3D008C2BD2336E00AEBCEC /* SceneDelegate.swift in Sources */,
 				AD3D00A12BD2340800AEBCEC /* MenuViewController.swift in Sources */,
 				ADB316842BD5E89F00039498 /* MenuModel.swift in Sources */,
+				ADB3169A2BD625FD00039498 /* Combine+WithLatestFrom.swift in Sources */,
+				ADB3168E2BD6009200039498 /* WithLatestFromViewController.swift in Sources */,
+				ADB316932BD600C500039498 /* WithLatestFromNavigator.swift in Sources */,
 				AD3D00A52BD2347C00AEBCEC /* MenuViewModel.swift in Sources */,
+				ADB3168B2BD5F41100039498 /* MenuNavigator.swift in Sources */,
 				AD3D00AC2BD23E5900AEBCEC /* Extension+UICollectionView.swift in Sources */,
+				ADB316912BD600B700039498 /* WithLatestFromViewModel.swift in Sources */,
 				ADB316862BD5EB3D00039498 /* Extension+Publishers.swift in Sources */,
 				AD3D00AA2BD23CCB00AEBCEC /* MenuCollectionViewCell.swift in Sources */,
 			);
