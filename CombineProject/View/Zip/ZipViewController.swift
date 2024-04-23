@@ -98,6 +98,10 @@ final class ZipViewController: UIViewController {
         self.viewDidLoadPublisher.send()
     }
     
+    deinit {
+        print("DEINIT \(type(of: self))")
+    }
+    
 }
 
 private extension ZipViewController {

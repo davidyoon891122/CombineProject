@@ -98,6 +98,10 @@ final class CombineLatestViewController: UIViewController {
         self.bindViewModel()
     }
     
+    deinit {
+        print("DEINIT \(type(of: self))")
+    }
+    
 }
 
 private extension CombineLatestViewController {

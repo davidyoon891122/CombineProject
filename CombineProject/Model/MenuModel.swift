@@ -11,6 +11,7 @@ enum MenuType: CaseIterable {
     
     case withLatestFrom
     case combineLatest
+    case zip
     
     var title: String {
         switch self {
@@ -18,6 +19,8 @@ enum MenuType: CaseIterable {
             return "WithLatestFrom"
         case .combineLatest:
             return "CombineLatest"
+        case .zip:
+            return "Zip"
         }
     }
     

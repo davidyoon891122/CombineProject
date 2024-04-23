@@ -42,6 +42,9 @@ extension MenuNavigator: MenuNavigatorProtocol {
         case .combineLatest:
             let navigator = CombineLatestNavigator(navigationController: self.navigationController)
             navigator.openView()
+        case .zip:
+            let navigator = ZipNavigator(navigationController: self.navigationController)
+            navigator.openView()
         }
     }
     
