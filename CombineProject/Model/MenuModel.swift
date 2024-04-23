@@ -10,11 +10,14 @@ import Foundation
 enum MenuType: CaseIterable {
     
     case withLatestFrom
+    case combineLatest
     
     var title: String {
         switch self {
         case .withLatestFrom:
             return "WithLatestFrom"
+        case .combineLatest:
+            return "CombineLatest"
         }
     }
     

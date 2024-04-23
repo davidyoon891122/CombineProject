@@ -39,6 +39,9 @@ extension MenuNavigator: MenuNavigatorProtocol {
         case .withLatestFrom:
             let navigator = WithLatestFromNavigator(navigationController: self.navigationController)
             navigator.openView()
+        case .combineLatest:
+            let navigator = CombineLatestNavigator(navigationController: self.navigationController)
+            navigator.openView()
         }
     }
     

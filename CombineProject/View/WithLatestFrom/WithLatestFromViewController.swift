@@ -81,7 +81,6 @@ final class WithLatestFromViewController: UIViewController {
         return button
     }()
     
-    
     private let viewModel: WithLatestFromViewModel
 
     
