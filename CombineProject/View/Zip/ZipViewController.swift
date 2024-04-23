@@ -1,16 +1,15 @@
 //
-//  CombineLatestViewController.swift
+//  ZipViewController.swift
 //  CombineProject
 //
-//  Created by Davidyoon on 4/22/24.
+//  Created by Davidyoon on 4/23/24.
 //
 
 import UIKit
 import Combine
-import CombineCocoa
 import SnapKit
 
-final class CombineLatestViewController: UIViewController {
+final class ZipViewController: UIViewController {
     
     private let viewDidLoadPublisher: PassthroughSubject<Void, Never> = .init()
     private var cancellables: Set<AnyCancellable> = []
@@ -81,9 +80,9 @@ final class CombineLatestViewController: UIViewController {
         return button
     }()
     
-    private let viewModel: CombineLatestViewModel
+    private let viewModel: ZipViewModel
     
-    init(viewModel: CombineLatestViewModel) {
+    init(viewModel: ZipViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -96,11 +95,12 @@ final class CombineLatestViewController: UIViewController {
         super.viewDidLoad()
         self.setupViews()
         self.bindViewModel()
+        self.viewDidLoadPublisher.send()
     }
     
 }
 
-private extension CombineLatestViewController {
+private extension ZipViewController {
     
     func setupViews() {
         self.view.backgroundColor = .systemBackground
@@ -152,7 +152,7 @@ private extension CombineLatestViewController {
             }
             .eraseToAnyPublisher()
         
-        let outputs = self.viewModel.bind(.init(
+        let outputs = self.viewModel.bind(inputs: .init(
             viewDidLoad: self.viewDidLoadPublisher.eraseToAnyPublisher(),
             numberButton: numberPublisher,
             stringButton: stringPublisher,
@@ -185,5 +185,5 @@ private extension CombineLatestViewController {
 }
 
 #Preview {
-    CombineLatestViewController(viewModel: CombineLatestViewModel(navigator: CombineLatestNavigator(navigationController: nil)))
+    ZipViewController(viewModel: ZipViewModel(navigator: ZipNavigator(navigationController: nil)))
 }
